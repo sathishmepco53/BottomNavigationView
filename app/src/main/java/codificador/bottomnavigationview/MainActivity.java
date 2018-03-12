@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -59,7 +60,10 @@ public class MainActivity extends AppCompatActivity {
                 String value = data.getStringExtra("name");
                 System.out.println("Yes "+value);
                 MainFragment fragment = (MainFragment) getSupportFragmentManager().findFragmentByTag("main");
-                fragment.setValue(value);
+                if(fragment != null)
+                    fragment.setValue(value);
+                else
+                    Toast.makeText(getApplicationContext(), "Main Fragment is not visibled", Toast.LENGTH_SHORT).show();
             }else{
                 System.out.println("No");
             }
